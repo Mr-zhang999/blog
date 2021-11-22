@@ -31,7 +31,7 @@ public class AccountController {
 
     @PostMapping("/login")
     public Result login(@Validated @RequestBody LoginDto loginDto, HttpServletResponse response) {
-
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
         User user = userService.getOne(new QueryWrapper<User>().eq("username", loginDto.getUsername()));
         Assert.notNull(user, "用户不存在");
 
